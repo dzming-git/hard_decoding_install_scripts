@@ -10,7 +10,12 @@ PACKAGES_PATH=$(realpath "..")
 
 pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
-declare -A TORCH_FILES=(
+TORCH_FILES=(
+    "torch==2.0.0+cu117"
+    "torchvision==0.15.1+cu117"
+)
+
+declare -A TORCH_FILES_DICT=(
     ["torch==2.0.0+cu117"]="torch-2.0.0+cu117-cp38-cp38-linux_x86_64.whl"
     ["torchvision==0.15.1+cu117"]="torchvision-0.15.1+cu117-cp38-cp38-linux_x86_64.whl"
 )
@@ -33,8 +38,8 @@ find_file() {
 }
 
 
-for pkg in "${!TORCH_FILES[@]}"; do
-    filename=${TORCH_FILES[$pkg]}
+for pkg in "${TORCH_FILES[@]}"; do
+    filename=${TORCH_FILES_DICT[$pkg]}
     path=$(find_file "$filename")
     if [[ -z "$path" ]]; then
         pip3 install ${pkg}
@@ -42,3 +47,5 @@ for pkg in "${!TORCH_FILES[@]}"; do
         pip3 install ${path}
     fi
 done
+
+python3 -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
