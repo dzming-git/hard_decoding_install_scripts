@@ -33,6 +33,7 @@
 
 ## 文件结构
 
+```text
 .
 ├── cuda_11.7.1_515.65.01_linux.run
 ├── cudnn-linux-x86_64-8.9.6.50_cuda11-archive
@@ -45,6 +46,7 @@
 ├── torchvision-0.15.1+cu117-cp38-cp38-linux_x86_64.whl
 ├── Video_Codec_SDK_11.1.5
 └── Video_Codec_SDK_12.1.14
+```
 
 ## 安装
 
