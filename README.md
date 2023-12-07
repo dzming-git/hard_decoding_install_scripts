@@ -57,6 +57,7 @@
 ```bash
 docker run \
 -itd \
+--privileged \
 --env NVIDIA_DRIVER_CAPABILITIES=video,compute,utility \
 --env DEBIAN_FRONTEND=noninteractive \
 --name hard_decoding_base \
@@ -71,4 +72,11 @@ ubuntu:20.04 \
 ```bash
 cd /volume_folder/scripts
 bash install_all.sh
+```
+
+确认安装完毕后，取消挂载
+
+```bash
+umount /volume_folder
+rm -r /volume_folder
 ```
