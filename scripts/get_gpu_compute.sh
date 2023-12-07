@@ -7,6 +7,8 @@
 ################################################################################
 
 # 显卡算力表格
+# 如果没有对应型号的GPU，在下面的链接查询
+# https://developer.nvidia.com/cuda-gpus
 declare -A GPU_COMPUTE_MAP=(
     ["GeForce RTX 4090"]=8.9
     ["GeForce RTX 4080"]=8.9
