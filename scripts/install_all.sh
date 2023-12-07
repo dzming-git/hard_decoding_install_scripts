@@ -22,6 +22,8 @@ do
   bash "./${step}.sh" >> "../logs/${step}.logs"
 done
 
+python3 ./test_hard_decoding.py
+
 # bash ./install_packages.sh     >> ../logs/install_packages.log
 # bash ./install_cuda.sh         >> ../logs/install_cuda.log
 # bash ./install_torch.sh        >> ../logs/install_torch.log
