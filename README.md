@@ -50,7 +50,25 @@
 
 ## 安装
 
+### docker容器构建
+
+假设该文件夹地址为 `/home/admin508/dzm/hard_decoding/docker_shared_folder`，创建容器时将该目录通过 `--volume` 挂载到容器
+
 ```bash
-cd ./scripts
+docker run \
+-itd \
+--env NVIDIA_DRIVER_CAPABILITIES=video,compute,utility \
+--env DEBIAN_FRONTEND=noninteractive \
+--name hard_decoding_base \
+--volume /home/admin508/dzm/hard_decoding/docker_shared_folder:/volume_folder \
+--gpus all \
+ubuntu:20.04 \
+/bin/bash
+```
+
+### 容器内操作
+
+```bash
+cd /volume_folder/scripts
 bash install_all.sh
 ```
