@@ -8,15 +8,10 @@
 
 packages=()
 
-# cuda安装需要
-packages=(
-  "${packages[@]}"
-  libxml2
-)
-
 # 基础
 packages=(
   "${packages[@]}"
+  apt-utils
   vim
   gcc
   g++
@@ -29,6 +24,13 @@ packages=(
   git
   pkg-config
   checkinstall
+  net-tools
+)
+
+# cuda安装需要
+packages=(
+  "${packages[@]}"
+  libxml2
 )
 
 # python
@@ -74,9 +76,11 @@ packages=(
   libswscale-dev
 )
 
-apt update
+apt-get update
+
 for package in "${packages[@]}" 
 do 
-  apt install -y $package
+  apt-get install -y "$package"
 done
-apt purge -y --auto-remove
+
+apt-get purge -y --auto-remove
