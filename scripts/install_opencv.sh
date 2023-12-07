@@ -8,7 +8,7 @@
 
 source ./get_gpu_compute.sh
 
-PACKAGES_PATH=$(realpath "..")
+PACKAGES_PATH=$(realpath "../packages")
 
 OPENCV_VERSION="4.6.0"
 

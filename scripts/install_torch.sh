@@ -6,7 +6,7 @@
 # Description: 安装torch torchvision
 ################################################################################
 
-PACKAGES_PATH=$(realpath "..")
+PACKAGES_PATH=$(realpath "../packages")
 
 pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 

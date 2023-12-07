@@ -6,7 +6,7 @@
 # Description: 使用.run文件安装cuda
 ################################################################################
 
-PACKAGES_PATH=$(realpath "..")
+PACKAGES_PATH=$(realpath "../packages")
 
 cd ${PACKAGES_PATH}
 

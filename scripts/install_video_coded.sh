@@ -6,7 +6,7 @@
 # Description: 安装Video Codec SDK
 ################################################################################
 
-PACKAGES_PATH=$(realpath "..")
+PACKAGES_PATH=$(realpath "../packages")
 
 cd "${PACKAGES_PATH}/Video_Codec_SDK_12.1.14"
 

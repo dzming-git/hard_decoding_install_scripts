@@ -8,7 +8,7 @@
 
 source ./get_gpu_compute.sh
 
-PACKAGES_PATH=$(realpath "..")
+PACKAGES_PATH=$(realpath "../packages")
 
 cd "${PACKAGES_PATH}/nv-codec-headers-11.1.5.3"
 make

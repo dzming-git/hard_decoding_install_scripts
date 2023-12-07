@@ -6,7 +6,7 @@
 # Description: 安装cuDNN
 ################################################################################
 
-PACKAGES_PATH=$(realpath "..")
+PACKAGES_PATH=$(realpath "../packages")
 
 cd "${PACKAGES_PATH}/cudnn-linux-x86_64-8.9.6.50_cuda11-archive"
 cp include/*.h /usr/local/cuda/include
