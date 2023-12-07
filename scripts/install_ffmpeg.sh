@@ -33,5 +33,12 @@ ln -s /usr/local/ffmpeg/bin/ffplay /usr/bin/ffplay
 ln -s /usr/local/ffmpeg/bin/ffmpeg /usr/local/bin/ffmpeg
 ln -s /usr/local/ffmpeg/bin/ffprobe /usr/local/bin/ffprobe
 ln -s /usr/local/ffmpeg/bin/ffplay /usr/local/bin/ffplay
+ln -sf /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_ops_infer.so.8.9.6 /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_ops_infer.so.8
+ln -sf /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_adv_infer.so.8.9.6 /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_adv_infer.so.8
+ln -sf /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_ops_train.so.8.9.6 /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_ops_train.so.8
+ln -sf /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_cnn_train.so.8.9.6 /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_cnn_train.so.8
+ln -sf /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_adv_train.so.8.9.6 /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_adv_train.so.8
+ln -sf /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_cnn_infer.so.8.9.6 /usr/local/cuda/targets/x86_64-linux/lib/libcudnn_cnn_infer.so.8
+ln -sf /usr/local/cuda/targets/x86_64-linux/lib/libcudnn.so.8.9.6 /usr/local/cuda/targets/x86_64-linux/lib/libcudnn.so.8
 echo "/usr/local/ffmpeg/lib" >> /etc/ld.so.conf.d/ffmpeg.conf
 ldconfig
