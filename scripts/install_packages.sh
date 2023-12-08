@@ -76,6 +76,12 @@ packages=(
   libswscale-dev
 )
 
+# opencv
+packages=(
+  "${packages[@]}"
+  libgtk2.0-dev
+)
+
 apt-get update
 
 for package in "${packages[@]}" 
