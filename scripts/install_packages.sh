@@ -9,10 +9,8 @@
 packages=()
 
 # 基础
-packages=(
-  "${packages[@]}"
+PACKAGES_BASE=(
   apt-utils
-  vim
   gcc
   g++
   wget
@@ -20,29 +18,31 @@ packages=(
   make
   build-essential
   unzip
-  iputils-ping
-  git
   pkg-config
   checkinstall
-  net-tools
 )
 
+PACKAGES_COMMON={
+  net-tools
+  gedit
+  vim
+  iputils-ping
+  git
+}
+
 # cuda安装需要
-packages=(
-  "${packages[@]}"
+PACKAGES_CUDA=(
   libxml2
 )
 
 # python
-packages=(
-  "${packages[@]}"
+PACKAGES_PYTHON=(
   python3.8
   python3-pip
 )
 
 # ffmpeg
-packages=(
-  "${packages[@]}"
+PACKAGES_FFMPEG=(
   libfaac-dev
   libgpac-dev
   ladspa-sdk-dev
@@ -77,14 +77,22 @@ packages=(
 )
 
 # opencv
-packages=(
-  "${packages[@]}"
+PACKAGES_OPENCV=(
   libgtk2.0-dev
+)
+
+PACKAGES_ALL=(
+  "${PACKAGES_BASE[@]}"
+  "${PACKAGES_COMMON[@]}"
+  "${PACKAGES_CUDA[@]}"
+  "${PACKAGES_PYTHON[@]}"
+  "${PACKAGES_FFMPEG[@]}"
+  "${PACKAGES_OPENCV[@]}"
 )
 
 apt-get update
 
-for package in "${packages[@]}" 
+for package in "${PACKAGES_ALL[@]}" 
 do 
   apt-get install -y "$package"
 done
