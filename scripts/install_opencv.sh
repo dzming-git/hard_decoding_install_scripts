@@ -12,8 +12,8 @@ OPENCV_VERSION="4.6.0"
 
 cd $ORIGINAL_PACKAGE_PATH
 
-# unzip -n opencv-${OPENCV_VERSION}.zip -d ${DECOMPASS_PATH}
-# unzip -n opencv_contrib-${OPENCV_VERSION}.zip -d ${DECOMPASS_PATH}
+unzip -n opencv-${OPENCV_VERSION}.zip -d ${DECOMPASS_PATH}
+unzip -n opencv_contrib-${OPENCV_VERSION}.zip -d ${DECOMPASS_PATH}
 
 mkdir $DECOMPASS_PATH/opencv-$OPENCV_VERSION/build
 cd $DECOMPASS_PATH/opencv-$OPENCV_VERSION/build
