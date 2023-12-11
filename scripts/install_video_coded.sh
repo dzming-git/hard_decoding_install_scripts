@@ -17,5 +17,5 @@ cd "$DECOMPASS_PATH/Video_Codec_SDK_12.1.14"
 cp Lib/linux/stubs/x86_64/* /usr/local/cuda/lib64/stubs
 cp Interface/*.h /usr/local/cuda/include
 
-echo export PATH=$PATH:/usr/local/cuda/lib64/stubs >> ~/.bashrc
+echo export PATH='$PATH':/usr/local/cuda/lib64/stubs >> ~/.bashrc
 source ~/.bashrc
