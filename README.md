@@ -29,30 +29,46 @@
 - [Torch下载](https://download.pytorch.org/whl/cu117/torch-2.0.0%2Bcu117-cp38-cp38-linux_x86_64.whl)
 - [torchvision下载](https://download.pytorch.org/whl/cu117/torchvision-0.15.1%2Bcu117-cp38-cp38-linux_x86_64.whl)
 
-解压缩之后，放在与 `scripts` 同级目录下。
+下载路径为 `./compressed_packages`
+
+```bash
+mkdir -p ./compressed_packages
+wget -P ./compressed_packages https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.run
+wget -P ./compressed_packages https://developer.nvidia.com/downloads/compute/cudnn/secure/8.9.6/local_installers/11.x/cudnn-linux-x86_64-8.9.6.50_cuda11-archive.tar.xz
+wget -P ./compressed_packages https://developer.download.nvidia.com/designworks/video-codec-sdk/secure/12.1/Video_Codec_SDK_12.1.14.zip
+wget -P ./compressed_packages https://github.com/opencv/opencv/archive/4.6.0.zip
+wget -P ./compressed_packages https://github.com/opencv/opencv_contrib/archive/4.6.0.zip
+wget -P ./compressed_packages https://github.com/FFmpeg/nv-codec-headers/releases/download/n11.1.5.3/nv-codec-headers-11.1.5.3.tar.gz
+wget -P ./compressed_packages https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ffmpeg/7:4.2.2-1ubuntu1/ffmpeg_4.2.2.orig.tar.xz
+wget -P ./compressed_packages https://download.pytorch.org/whl/cu117/torch-2.0.0%2Bcu117-cp38-cp38-linux_x86_64.whl
+wget -P ./compressed_packages https://download.pytorch.org/whl/cu117/torchvision-0.15.1%2Bcu117-cp38-cp38-linux_x86_64.whl
+```
 
 ## 文件结构
 
 ```text
 .
-└── packages
-    ├── cuda_11.7.1_515.65.01_linux.run
-    ├── cudnn-linux-x86_64-8.9.6.50_cuda11-archive
-    │    └── ...
-    ├── ffmpeg-4.2.2
-    │   └── ...
-    ├── nv-codec-headers-11.1.5.3
-    │   └── ...
-    ├── opencv-4.6.0
-    │   └── ...
-    ├── opencv_contrib-4.6.0
-    │   └── ...
-    ├── scripts
-    │   └── ...
-    ├── torch-2.0.0+cu117-cp38-cp38-linux_x86_64.whl
-    ├── torchvision-0.15.1+cu117-cp38-cp38-linux_x86_64.whl
-    └── Video_Codec_SDK_12.1.14
-        └── ...
+├── original_packages
+│   ├── cuda_11.7.1_515.65.01_linux.run
+│   ├── cudnn-linux-x86_64-8.9.6.50_cuda11-archive.tar.xz
+│   ├── ffmpeg_4.2.2.orig.tar.xz
+│   ├── nv-codec-headers-11.1.5.3.tar.gz
+│   ├── opencv-4.6.0.zip
+│   ├── opencv_contrib-4.6.0.zip
+│   └── Video_Codec_SDK_12.1.14.zip
+└── scripts
+    ├── get_gpu_compute.sh
+    ├── get_options.sh
+    ├── install_all.sh
+    ├── install_cuda.sh
+    ├── install_cudnn.sh
+    ├── install_ffmpeg.sh
+    ├── install_opencv.sh
+    ├── install_packages.sh
+    ├── install_torch.sh
+    ├── install_video_coded.sh
+    └── test_hard_decoding.py
+
 ```
 
 ## 安装

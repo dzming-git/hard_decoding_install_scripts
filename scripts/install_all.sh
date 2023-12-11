@@ -6,6 +6,13 @@
 # Description: 一键安装硬解码所需的环境
 ################################################################################
 
+OPTS=$*
+source ./get_options.sh $*
+if [[ $OPTS != *"-g"* ]]; then
+  OPTS="$OPTS -g $GPU_COMPUTE"
+fi
+echo $OPTS
+
 STEPS=(
     install_packages
     install_cuda
@@ -19,10 +26,12 @@ STEPS=(
 for step in "${STEPS[@]}" 
 do 
   echo step
-  bash "./${step}.sh" >> "../logs/${step}.logs"
+  bash ./$step.sh $OPTS >> ../logs/$step.logs
 done
 
-python3 ./test_hard_decoding.py
+if $WITH_PYTHON; then
+  python3 ./test_hard_decoding.py
+fi
 
 # bash ./install_packages.sh     >> ../logs/install_packages.log
 # bash ./install_cuda.sh         >> ../logs/install_cuda.log

@@ -6,6 +6,8 @@
 # Description: 使用apt install安装全过程所需要的包
 ################################################################################
 
+source ./get_options.sh $*
+
 packages=()
 
 # 基础
@@ -22,13 +24,13 @@ PACKAGES_BASE=(
   checkinstall
 )
 
-PACKAGES_COMMON={
+PACKAGES_COMMON=(
   net-tools
   gedit
   vim
   iputils-ping
   git
-}
+)
 
 # cuda安装需要
 PACKAGES_CUDA=(
@@ -85,10 +87,16 @@ PACKAGES_ALL=(
   "${PACKAGES_BASE[@]}"
   "${PACKAGES_COMMON[@]}"
   "${PACKAGES_CUDA[@]}"
-  "${PACKAGES_PYTHON[@]}"
   "${PACKAGES_FFMPEG[@]}"
   "${PACKAGES_OPENCV[@]}"
 )
+
+if $WITH_PYTHON; then
+PACKAGES_ALL=(
+  "${PACKAGES_ALL[@]}"
+  "${PACKAGES_PYTHON[@]}"
+)
+fi
 
 apt-get update
 
