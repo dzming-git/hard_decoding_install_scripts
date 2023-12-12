@@ -25,6 +25,7 @@ PACKAGES_BASE=(
   checkinstall
 )
 
+# 常用工具
 PACKAGES_COMMON=(
   net-tools
   gedit
@@ -79,6 +80,15 @@ PACKAGES_FFMPEG=(
   libswscale-dev
 )
 
+# opcengl
+PACKAGES_OPENGL=(
+  mesa-utils
+  freeglut3-dev
+  libgl1-mesa-dev
+  libglu1-mesa-dev
+  qt5-default
+)
+
 # opencv
 PACKAGES_OPENCV=(
   libgtk2.0-dev
@@ -90,6 +100,7 @@ PACKAGES_ALL=(
   "${PACKAGES_CUDA[@]}"
   "${PACKAGES_FFMPEG[@]}"
   "${PACKAGES_OPENCV[@]}"
+  "${PACKAGES_OPENGL[@]}"
 )
 
 if $WITH_PYTHON; then
