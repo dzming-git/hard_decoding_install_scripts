@@ -15,6 +15,15 @@ cd $ORIGINAL_PACKAGE_PATH
 unzip -n opencv-${OPENCV_VERSION}.zip -d ${DECOMPASS_PATH}
 unzip -n opencv_contrib-${OPENCV_VERSION}.zip -d ${DECOMPASS_PATH}
 
+if [ -n "$OPENCV_CONTRIB_SOURCES" ]; then
+  cd $DECOMPASS_PATH/opencv_contrib-$OPENCV_VERSION/modules
+  sed -i '27s#.*#"file://'"$OPENCV_CONTRIB_SOURCES"'/"#' xfeatures2d/cmake/download_boostdesc.cmake
+  sed -i '21s#.*#"file://'"$OPENCV_CONTRIB_SOURCES"'/"#' xfeatures2d/cmake/download_vgg.cmake
+  sed -i '17s#.*#URL "file://'"$OPENCV_CONTRIB_SOURCES"'/"#' cudaoptflow/CMakeLists.txt
+  sed -i '19s#.*#"file://'"$OPENCV_CONTRIB_SOURCES"'/"#' face/CMakeLists.txt
+  sed -i '31s#.*#"file://'"$OPENCV_CONTRIB_SOURCES"'/"#' wechat_qrcode/CMakeLists.txt
+fi
+
 mkdir $DECOMPASS_PATH/opencv-$OPENCV_VERSION/build
 cd $DECOMPASS_PATH/opencv-$OPENCV_VERSION/build
 
@@ -48,7 +57,6 @@ CMAKE_OPTIONS="\
 -D WITH_GSTREAMER=ON \
 -D BUILD_JAVA=OFF \
 -D BUILD_opencv_cudacodec=ON \
--D BUILD_opencv_python3=ON \
 -D BUILD_opencv_python2=OFF \
 -D BUILD_NEW_PYTHON_SUPPORT=ON \
 -D OPENCV_SKIP_PYTHON_LOADER=ON \
@@ -63,10 +71,10 @@ CMAKE_OPTIONS="\
 -D CUDA_nppicom_LIBRARY=stdc++ \
 "
 
-PYTHON3_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
-
 if $WITH_PYTHON; then
+  PYTHON3_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
   CMAKE_OPTIONS="$CMAKE_OPTIONS \
+  -D BUILD_opencv_python3=ON \
   -D PYTHON_DEFAULT_EXECUTABLE=$(python3 -c "import sys; print(sys.executable)") \
   -D PYTHON3_EXECUTABLE=$(python3 -c "import sys; print(sys.executable)") \
   -D PYTHON3_NUMPY_INCLUDE_DIRS=$(python3 -c "import numpy; print (numpy.get_include())") \
