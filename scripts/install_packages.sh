@@ -6,7 +6,8 @@
 # Description: 使用apt install安装全过程所需要的包
 ################################################################################
 
-source ./get_options.sh $*
+cd "$(cd "$(dirname "$0")" && pwd)"
+source get_options.sh $*
 
 packages=()
 

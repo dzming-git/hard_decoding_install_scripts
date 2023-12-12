@@ -6,7 +6,8 @@
 # Description: 安装cuDNN
 ################################################################################
 
-source ./get_options.sh $*
+cd "$(cd "$(dirname "$0")" && pwd)"
+source get_options.sh $*
 
 tar -xvf "${ORIGINAL_PACKAGE_PATH}/cudnn-linux-x86_64-8.9.6.50_cuda11-archive.tar.xz" -C ${DECOMPASS_PATH}
 

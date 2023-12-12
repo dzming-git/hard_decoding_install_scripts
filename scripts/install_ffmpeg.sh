@@ -6,7 +6,9 @@
 # Description: 安装ffmpeg
 ################################################################################
 
-source ./get_options.sh $*
+cd "$(cd "$(dirname "$0")" && pwd)"
+source get_options.sh $*
+
 GPU_COMPUTE=${GPU_COMPUTE//./}
 
 tar -zxvf ${ORIGINAL_PACKAGE_PATH}/nv-codec-headers-11.1.5.3.tar.gz -C ${DECOMPASS_PATH}

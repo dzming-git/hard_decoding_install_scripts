@@ -7,7 +7,8 @@
 ################################################################################
 
 OPTS=$*
-source ./get_options.sh $*
+cd "$(cd "$(dirname "$0")" && pwd)"
+source get_options.sh $*
 if [[ $OPTS != *"-g"* ]]; then
   OPTS="$OPTS -g $GPU_COMPUTE"
 fi

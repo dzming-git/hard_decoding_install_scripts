@@ -6,7 +6,8 @@
 # Description: 安装Video Codec SDK
 ################################################################################
 
-source ./get_options.sh $*
+cd "$(cd "$(dirname "$0")" && pwd)"
+source get_options.sh $*
 
 cd ${ORIGINAL_PACKAGE_PATH}
 

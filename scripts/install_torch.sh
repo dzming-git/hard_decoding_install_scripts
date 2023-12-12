@@ -6,7 +6,8 @@
 # Description: 安装torch torchvision
 ################################################################################
 
-source ./get_options.sh $*
+cd "$(cd "$(dirname "$0")" && pwd)"
+source get_options.sh $*
 
 if  ! $WITH_PYTHON; then
   exit

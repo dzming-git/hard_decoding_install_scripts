@@ -6,7 +6,8 @@
 # Description: 安装opencv
 ################################################################################
 
-source ./get_options.sh $*
+cd "$(cd "$(dirname "$0")" && pwd)"
+source get_options.sh $*
 
 OPENCV_VERSION="4.6.0"
 
