@@ -11,7 +11,7 @@ source ./get_options.sh $*
 if [[ $OPTS != *"-g"* ]]; then
   OPTS="$OPTS -g $GPU_COMPUTE"
 fi
-echo $OPTS
+echo "$OPTS"
 
 STEPS=(
     install_packages
@@ -26,7 +26,7 @@ STEPS=(
 for step in "${STEPS[@]}" 
 do 
   echo step
-  bash ./$step.sh $OPTS >> ../logs/$step.logs
+  bash "./${step}.sh ${OPTS}" >> "../logs/${step}.logs"
 done
 
 if $WITH_PYTHON; then

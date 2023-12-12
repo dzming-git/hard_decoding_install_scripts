@@ -8,9 +8,9 @@
 
 source ./get_options.sh $*
 
-tar -xvf $ORIGINAL_PACKAGE_PATH/cudnn-linux-x86_64-8.9.6.50_cuda11-archive.tar.xz -C $DECOMPASS_PATH
+tar -xvf "${ORIGINAL_PACKAGE_PATH}/cudnn-linux-x86_64-8.9.6.50_cuda11-archive.tar.xz" -C ${DECOMPASS_PATH}
 
-cd $DECOMPASS_PATH/cudnn-linux-x86_64-8.9.6.50_cuda11-archive
+cd "${DECOMPASS_PATH}/cudnn-linux-x86_64-8.9.6.50_cuda11-archive"
 
 cp include/*.h /usr/local/cuda/include
 cp lib/libcudnn* /usr/local/cuda/lib64

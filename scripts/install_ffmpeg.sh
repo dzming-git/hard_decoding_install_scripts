@@ -9,19 +9,19 @@
 source ./get_options.sh $*
 GPU_COMPUTE=${GPU_COMPUTE//./}
 
-tar -zxvf $ORIGINAL_PACKAGE_PATH/nv-codec-headers-11.1.5.3.tar.gz -C $DECOMPASS_PATH
+tar -zxvf ${ORIGINAL_PACKAGE_PATH}/nv-codec-headers-11.1.5.3.tar.gz -C ${DECOMPASS_PATH}
 
 cd ${DECOMPASS_PATH}/nv-codec-headers-11.1.5.3
 make
 make install
 
-tar -xvf $ORIGINAL_PACKAGE_PATH/ffmpeg_4.2.2.orig.tar.xz -C $DECOMPASS_PATH
+tar -xvf ${ORIGINAL_PACKAGE_PATH}/ffmpeg_4.2.2.orig.tar.xz -C ${DECOMPASS_PATH}
 
-cd $DECOMPASS_PATH/ffmpeg-4.2.2
+cd ${DECOMPASS_PATH}/ffmpeg-4.2.2
 
 # 根据显卡算力修改configure中的参数
-sed -i '4237s/.*/    nvccflags_default="-gencode arch=compute_'"$GPU_COMPUTE"',code=sm_'"$GPU_COMPUTE"' -O2"/' ./configure
-sed -i '4240s/.*/    nvccflags_default="--cuda-gpu-arch=sm_'"$GPU_COMPUTE"' -O2"/' ./configure
+sed -i '4237s/.*/    nvccflags_default="-gencode arch=compute_'"${GPU_COMPUTE}"',code=sm_'"${GPU_COMPUTE}"' -O2"/' ./configure
+sed -i '4240s/.*/    nvccflags_default="--cuda-gpu-arch=sm_'"${GPU_COMPUTE}"' -O2"/' ./configure
 
 ./configure --prefix=/usr/local/ffmpeg --enable-shared --enable-nonfree --enable-gpl --enable-version3 --enable-libmp3lame --enable-libvpx --enable-libopus --enable-opencl --enable-libxcb --enable-avresample --enable-opengl --enable-nvenc --enable-vaapi --enable-vdpau --enable-ffplay --enable-ffprobe --enable-libxvid --enable-libx264 --enable-libx265 --enable-openal --enable-openssl --enable-cuda-nvcc --enable-cuvid --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64
 make -j8

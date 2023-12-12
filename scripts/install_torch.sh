@@ -46,8 +46,8 @@ for pkg in "${TORCH_FILES[@]}"; do
     filename=${TORCH_FILES_DICT[$pkg]}
     path=$(find_file "$filename")
     if [[ -z "$path" ]]; then
-        pip3 install $pkg
+        pip3 install ${pkg}
     else
-        pip3 install $path
+        pip3 install ${path}
     fi
 done
